@@ -1,0 +1,63 @@
+/* flash */
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    /* overflow: hidden; */
+}
+
+.page {
+    background-color: lightblue;
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes cameraFlash {
+    from {
+        box-shadow: 0;
+    }
+    to {
+        box-shadow: inset 0 0 10px 1000px rgb(255, 255, 255);
+    }
+}
+
+.imageWrap {
+    /* display: flex; */
+    /* cursor: pointer; */
+    /* vertical-align: middle; */
+    height: 100%;
+    width: 100%;
+    /* border: 3px solid #000; */
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.imageWrap {
+    position: fixed;
+    display: none;
+}
+
+.imageWrap:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.shutterClick {
+    display: flex;
+    animation: cameraFlash .3s .3s alternate-reverse 1;
+}
+
+
+/* .imageWrap.shutterClick:before {
+    content: '';
+    animation: cameraFlash .3s .3s alternate-reverse 1;
+} */
