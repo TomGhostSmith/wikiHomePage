@@ -61,3 +61,19 @@ body {
     content: '';
     animation: cameraFlash .3s .3s alternate-reverse 1;
 } */
+
+.girl {
+    margin: 5px;
+    display: inline-block;
+    position: fixed;
+}
+
+.girl.horizontal img {
+    height: 80%;
+    top: 10%;
+}
+
+.girl.vertical img {
+    height: 50%;
+    top: 30%;
+}
