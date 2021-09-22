@@ -12,6 +12,48 @@ const $flash = (removePage, showPage) => {
     }, 600);
 }
 
+function LayoutPage2() {
+    var wid = document.body.clientWidth;
+    var hei = document.body.clientHeight;
+    var girlbox1 = document.getElementById("girlbox1");
+    var girlbox2 = document.getElementById("girlbox2");
+    var girl1 = document.getElementById("girl1");
+    var girl2 = document.getElementById("girl2");
+    var dia1 = document.getElementById("dia1");
+    var dia2 = document.getElementById("dia2");
+    var text1 = document.getElementById("text1");
+    var text2 = document.getElementById("text2");
+    if (wid / hei < 1.33) {
+        girlbox1.style.width = (wid - 10 + "px");
+        girlbox1.style.height = (0.5 * hei - 10 + "px");
+        girlbox2.style.width = (wid - 10 + "px");
+        girlbox2.style.height = (0.5 * hei - 10 + "px");
+        girlbox2.style.left = 0;
+        girlbox2.style.top = (0.5 * hei + "px");
+        girlbox1.classList.add("horizontal");
+        girlbox2.classList.add("horizontal");
+        girlbox1.classList.remove("vertical");
+        girlbox2.classList.remove("vertical");
+        dia1.style.left = (0.05 * wid + girl1.width + "px");
+        dia1.style.width = (0.9 * wid - girl1.width + "px");
+        dia1.style.height = (2 * text1.offsetHeight + "px");
+        text1.style.paddingTop = (0.5 * text1.offsetHeight + "px");
+        // dia1.style.height = (0.15 * hei + "px");
+        // dia2.style.height = (0.15 * hei + "px");
+    } else {
+        girlbox1.style.width = (0.5 * wid - 10 + "px");
+        girlbox1.style.height = (hei - 10 + "px");
+        girlbox2.style.width = (0.5 * wid - 10 + "px");
+        girlbox2.style.height = (hei - 10 + "px");
+        girlbox2.style.top = 0;
+        girlbox2.style.left = (0.5 * wid + "px");
+        girlbox1.classList.add("vertical");
+        girlbox2.classList.add("vertical");
+        girlbox1.classList.remove("horizontal");
+        girlbox2.classList.remove("horizontal");
+    }
+}
+
 
 
 
@@ -19,33 +61,9 @@ function func1() {
     var page1 = document.getElementById("page1");
     var page2 = document.getElementById("page2");
     $flash(page1, page2);
-    var wid = document.body.clientWidth - 20;
-    var hei = document.body.clientHeight;
-    var girl1 = document.getElementById("girl1");
-    var girl2 = document.getElementById("girl2");
-    if (wid / hei < 1.33) {
-        girl1.style.width = (wid - 10 + "px");
-        girl1.style.height = (0.5 * hei - 10 + "px");
-        girl2.style.width = (wid - 10 + "px");
-        girl2.style.height = (0.5 * hei - 10 + "px");
-        girl2.style.left = 0;
-        girl2.style.top = (0.5 * hei + "px");
-        girl1.classList.add("horizontal");
-        girl2.classList.add("horizontal");
-        girl1.classList.remove("vertical");
-        girl2.classList.remove("vertical");
-    } else {
-        girl1.style.width = (0.5 * wid - 5 + "px");
-        girl1.style.height = (hei - 10 + "px");
-        girl2.style.width = (0.5 * wid - 5 + "px");
-        girl2.style.height = (hei - 10 + "px");
-        girl2.style.left = (0.5 * wid + "px");
-        girl2.style.top = 0;
-        girl1.classList.add("vertical");
-        girl2.classList.add("vertical");
-        girl1.classList.remove("horizontal");
-        girl2.classList.remove("horizontal");
-    }
+    setTimeout(() => {
+        LayoutPage2();
+    }, 400);
 }
 
 function func2() {
@@ -60,30 +78,21 @@ window.onresize = function() {
     var hei = document.body.clientHeight;
     var page2 = document.getElementById("page2");
     if (page2.classList.contains("active")) {
-        var girl1 = document.getElementById("girl1");
-        var girl2 = document.getElementById("girl2");
-        if (wid / hei < 1.33) {
-            girl1.style.width = (wid - 10 + "px");
-            girl1.style.height = (0.5 * hei - 10 + "px");
-            girl2.style.width = (wid - 10 + "px");
-            girl2.style.height = (0.5 * hei - 10 + "px");
-            girl2.style.left = 0;
-            girl2.style.top = (0.5 * hei + "px");
-            girl1.classList.add("horizontal");
-            girl2.classList.add("horizontal");
-            girl1.classList.remove("vertical");
-            girl2.classList.remove("vertical");
-        } else {
-            girl1.style.width = (0.5 * wid - 10 + "px");
-            girl1.style.height = (hei - 10 + "px");
-            girl2.style.width = (0.5 * wid - 10 + "px");
-            girl2.style.height = (hei - 10 + "px");
-            girl2.style.top = 0;
-            girl2.style.left = (0.5 * wid + "px");
-            girl1.classList.add("vertical");
-            girl2.classList.add("vertical");
-            girl1.classList.remove("horizontal");
-            girl2.classList.remove("horizontal");
-        }
+        LayoutPage2();
     }
+
 }
+
+document.addEventListener("scroll", function() {
+    var value = document.documentElement.scrollTop;
+    var girlbox1 = document.getElementById("girlbox1");
+    var girlbox2 = document.getElementById("girlbox2");
+    var wid = document.body.clientWidth;
+    var hei = document.body.clientHeight;
+    // console.log(value);
+    if (value > 100 && value < 800) {
+        girlbox1.style.width = ((0.5 + (value - 100) / 700 * 0.16) * wid - 10 + "px");
+        girlbox2.style.width = ((0.5 - (value - 100) / 700 * 0.16) * wid - 10 + "px");
+        girlbox2.style.left = ((0.5 + (value - 100) / 700 * 0.16) * wid + "px");
+    }
+})
