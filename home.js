@@ -1,82 +1,192 @@
 // flash
 
+var wid, hei;
+
+var page1 = document.getElementById("page1");
+var page2 = document.getElementById("page2");
+var page3 = document.getElementById("page3");
+var page4 = document.getElementById("page4");
+
+var girlbox1 = document.getElementById("girlbox1");
+var girlbox2 = document.getElementById("girlbox2");
+var girl1 = document.getElementById("girl1");
+var girl2 = document.getElementById("girl2");
+var dialog1 = document.getElementById("dialog1");
+var dialog2 = document.getElementById("dialog2");
+var text1 = document.getElementById("text1");
+var text2 = document.getElementById("text2");
+var vertical;
+var originTop1, originTop2;
+
+var star = document.getElementById("star");
+
 const $flash = (removePage, showPage) => {
     var wrap = document.getElementById("wrap");
     wrap.classList.add("shutterClick");
     setTimeout(function() {
         showPage.classList.add("active");
         removePage.classList.remove("active");
-    }, 300);
+    }, 200);
     setTimeout(function() {
         wrap.classList.remove("shutterClick");
     }, 600);
 }
 
+// 加载动画
+
+var cx = Math.random() * 10 + 10,
+    cy = Math.random() * 10 + 10;
+// var cx = 20,
+// cy = 20;
+// console.log(document.body.clientWidth);
+// star.style.left = (document.body.clientWidth / 2 - 100) + "px";
+// star.style.top = (document.body.clientHeight / 2 - 100) + "px";
+var loadingAnimation = setInterval(() => {
+    // console.log(star.style.left + Math.random() * 10 + "px");
+    star.style.left = (parseInt(star.style.left) + Math.random() * cx + cx) + "px";
+    star.style.top = (parseInt(star.style.top) + Math.random() * cy + cy) + "px";
+    // star.style.left = "100px";
+    if (parseInt(star.style.left) < 0) {
+        cx = Math.abs(cx);
+    }
+    if (parseInt(star.style.top) < 0) {
+        cy = Math.abs(cy);
+    }
+    if (parseInt(star.style.left) + 200 > document.body.clientWidth) {
+        cx = -Math.abs(cx);
+    }
+    if (parseInt(star.style.top) + 200 > document.body.clientHeight) {
+        cy = -Math.abs(cy);
+    }
+}, 50);
+
+// setTimeout(() => {
+//     // alert();
+//     LoadingFade();
+// }, 3000);
+LoadingFade()
+
+function LoadingFade() {
+    var loadingPage = document.getElementById("loading");
+    var candida = document.getElementById("candida");
+    var slowingDown = setInterval(() => {
+        cx = cx / 2;
+        cy = cy / 2;
+    }, 100);
+    setTimeout(() => {
+        clearInterval(loadingAnimation);
+        clearInterval(slowingDown);
+        var flashing = setInterval(() => {
+            star.classList.add("hide");
+            setTimeout(() => {
+                star.classList.remove("hide");
+            }, 200);
+        }, 400);
+        candida.classList.add("show");
+        candida.style.left = (parseInt(star.style.left) + 50) + "px";
+        candida.style.top = (parseInt(star.style.top) + 75) + "px";
+        setTimeout(() => {
+            clearInterval(flashing);
+            $flash(loadingPage, page1);
+            setTimeout(() => {
+                loadingPage.style.display = "none";
+                LayoutPage1();
+                LayoutPage2();
+            }, 300);
+        }, 1200);
+    }, 1500);
+}
+
+
+
+
+
+// 页面布局
+
+
+function LayoutPage1() {
+    wid = document.body.clientWidth;
+    hei = document.body.clientHeight;
+    var logo = document.getElementById("logo");
+    // console.log(logo.clientHeight);
+    logo.style.top = (hei - logo.clientHeight) / 2.5 + "px";
+}
+
 function LayoutPage2() {
-    var wid = document.body.clientWidth;
-    var hei = document.body.clientHeight;
-    var girlbox1 = document.getElementById("girlbox1");
-    var girlbox2 = document.getElementById("girlbox2");
-    var girl1 = document.getElementById("girl1");
-    var girl2 = document.getElementById("girl2");
-    var dia1 = document.getElementById("dia1");
-    var dia2 = document.getElementById("dia2");
-    var text1 = document.getElementById("text1");
-    var text2 = document.getElementById("text2");
-    if (wid / hei < 1.33) {
+    wid = document.body.clientWidth;
+    hei = document.body.clientHeight;
+    vertical = (wid / hei < 1.33);
+    if (vertical) {
         girlbox1.style.width = (wid - 10 + "px");
         girlbox1.style.height = (0.5 * hei - 10 + "px");
         girlbox2.style.width = (wid - 10 + "px");
         girlbox2.style.height = (0.5 * hei - 10 + "px");
+        girlbox1.style.top = 0;
+        girlbox1.style.left = 0;
         girlbox2.style.left = 0;
         girlbox2.style.top = (0.5 * hei + "px");
         girlbox1.classList.add("horizontal");
         girlbox2.classList.add("horizontal");
         girlbox1.classList.remove("vertical");
         girlbox2.classList.remove("vertical");
-        dia1.style.left = (0.05 * wid + girl1.width + "px");
-        dia1.style.width = (0.9 * wid - girl1.width + "px");
-        dia1.style.height = (2 * text1.offsetHeight + "px");
-        text1.style.paddingTop = (0.5 * text1.offsetHeight + "px");
-        // dia1.style.height = (0.15 * hei + "px");
-        // dia2.style.height = (0.15 * hei + "px");
+
+        // dialog box
+        dialog1.style.left = (0.05 * wid + girl1.clientWidth + "px");
+        originTop1 = (girlbox1.clientHeight - girl1.clientHeight) / 2;
+        dialog1.style.width = (0.9 * wid - girl1.clientWidth + "px");
+        dialog1.style.height = (text1.clientHeight + "px");
+        dialog2.style.right = (0.05 * wid + girl2.clientWidth + "px");
+        originTop2 = (girlbox2.clientHeight - girl2.clientHeight) / 2;
+        dialog2.style.width = (0.9 * wid - girl2.clientWidth + "px");
+        dialog2.style.height = (text2.clientHeight + "px");
+
+
     } else {
         girlbox1.style.width = (0.5 * wid - 10 + "px");
         girlbox1.style.height = (hei - 10 + "px");
         girlbox2.style.width = (0.5 * wid - 10 + "px");
         girlbox2.style.height = (hei - 10 + "px");
+        girlbox1.style.top = 0;
+        girlbox1.style.left = 0;
         girlbox2.style.top = 0;
         girlbox2.style.left = (0.5 * wid + "px");
         girlbox1.classList.add("vertical");
         girlbox2.classList.add("vertical");
         girlbox1.classList.remove("horizontal");
         girlbox2.classList.remove("horizontal");
+
+        // dialog box
+        dialog1.style.left = (0.05 * wid + girl1.clientWidth + "px");
+        originTop1 = (girlbox1.clientHeight - girl1.clientHeight) / 2;
+        dialog1.style.width = (0.4 * wid - girl1.clientWidth + "px");
+        dialog1.style.height = (text1.clientHeight + "px");
+        dialog2.style.right = (0.05 * wid + girl2.clientWidth + "px");
+        originTop2 = (girlbox2.clientHeight - girl2.clientHeight) / 2;
+        dialog2.style.width = (0.4 * wid - girl2.clientWidth + "px");
+        dialog2.style.height = (text2.clientHeight + "px");
     }
 }
 
 
 
 
+// 按钮事件
+
 function func1() {
-    var page1 = document.getElementById("page1");
-    var page2 = document.getElementById("page2");
+
     $flash(page1, page2);
     setTimeout(() => {
         LayoutPage2();
+        document.documentElement.scrollTop = page2.offsetTop;
     }, 400);
 }
 
 function func2() {
-    var page1 = document.getElementById("page1");
-    var page2 = document.getElementById("page2");
     console.log(page1);
     $flash(page1, page2);
 }
 
 window.onresize = function() {
-    var wid = document.body.clientWidth;
-    var hei = document.body.clientHeight;
-    var page2 = document.getElementById("page2");
     if (page2.classList.contains("active")) {
         LayoutPage2();
     }
@@ -84,15 +194,118 @@ window.onresize = function() {
 }
 
 document.addEventListener("scroll", function() {
-    var value = document.documentElement.scrollTop;
-    var girlbox1 = document.getElementById("girlbox1");
-    var girlbox2 = document.getElementById("girlbox2");
-    var wid = document.body.clientWidth;
-    var hei = document.body.clientHeight;
-    // console.log(value);
-    if (value > 100 && value < 800) {
-        girlbox1.style.width = ((0.5 + (value - 100) / 700 * 0.16) * wid - 10 + "px");
-        girlbox2.style.width = ((0.5 - (value - 100) / 700 * 0.16) * wid - 10 + "px");
-        girlbox2.style.left = ((0.5 + (value - 100) / 700 * 0.16) * wid + "px");
+    var scrollTop = document.documentElement.scrollTop;
+    if (scrollTop - page2.offsetTop < 0) {
+        // page1.classList.add("active");
+        // page2.classList.remove("active");
+    } else if (scrollTop - page3.offsetTop < 0) {
+        page1.classList.remove("active");
+        page2.classList.add("active");
+        page3.classList.remove("active");
+    } else if (scrollTop - page4.offsetTop < 0) {
+        page2.classList.remove("active");
+        page3.classList.add("active");
+        page4.classList.remove("active");
+    } else {
+        page3.classList.remove("active");
+        page4.classList.add("active");
+    }
+
+
+    if (page2.classList.contains("active")) {
+        var value = scrollTop - page2.offsetTop;
+        if (value > 0 && value < parseInt(page2.style.height)) {
+            girlbox1.style.position = "fixed";
+            girlbox2.style.position = "fixed";
+        } else {
+            girlbox1.style.position = "absolute";
+            girlbox2.style.position = "absolute";
+        }
+
+        if (vertical) {
+            if (value >= 0 && value < 600) {
+                dialog1.style.top = originTop1 + 50 - value / 12 + "px";
+                dialog1.style.opacity = value / 6 + "%";
+
+            } else if (value < 0) {
+                dialog1.style.opacity = 0;
+            } else {
+                dialog1.style.opacity = "100%"
+            }
+
+            if (value >= 1200 && value < 1800) {
+                dialog2.style.top = originTop2 + 150 - value / 12 + "px";
+                dialog2.style.opacity = (value - 1200) / 6 + "%";
+                dialog1.style.top = originTop1 + 100 - value / 12 + "px";
+                dialog1.style.opacity = (1800 - value) / 6 + "%";
+            } else if (value < 1200) {
+                dialog2.style.opacity = 0;
+            } else {
+                dialog2.style.opacity = "100%";
+                dialog1.style.opacity = 0;
+            }
+
+            if (value >= 2400 && value < 3000) {
+                dialog2.style.top = originTop2 + 200 - value / 12 + "px";
+                dialog2.style.opacity = (3000 - value) / 6 + "%";
+            } else if (value > 3000) {
+                dialog2.style.opacity = 0;
+            }
+        } else {
+            if (value >= 400 && value < 800) {
+                dialog1.style.top = originTop1 + 100 - value / 8 + "px";
+                dialog1.style.opacity = value / 4 + "%";
+
+            } else if (value < 400) {
+                dialog1.style.opacity = 0;
+            } else {
+                dialog1.style.opacity = "100%"
+            }
+
+            if (value >= 1300 && value < 1700) {
+                dialog2.style.top = originTop2 + 212.5 - value / 8 + "px";
+                dialog2.style.opacity = (value - 1300) / 4 + "%";
+                dialog1.style.top = originTop1 + 162.5 - value / 8 + "px";
+                dialog1.style.opacity = (1700 - value) / 4 + "%";
+            } else if (value < 1300) {
+                dialog2.style.opacity = 0;
+            } else {
+                dialog2.style.opacity = "100%";
+                dialog1.style.opacity = 0;
+            }
+
+            if (value >= 2400 && value < 2800) {
+                dialog2.style.top = originTop2 + 300 - value / 8 + "px";
+                dialog2.style.opacity = (2800 - value) / 4 + "%";
+            } else if (value > 2800) {
+                dialog2.style.opacity = 0;
+            }
+
+
+            if (value > 0 && value < 600) {
+                girlbox1.style.width = ((0.5 + value / 600 * 0.2) * wid - 10 + "px");
+                girlbox2.style.width = ((0.5 - value / 600 * 0.2) * wid - 10 + "px");
+                girlbox2.style.left = ((0.5 + value / 600 * 0.2) * wid + "px");
+            }
+            if (value > 1200 && value < 1800) {
+                girlbox1.style.width = ((0.5 + (1500 - value) / 300 * 0.2) * wid - 10 + "px");
+                girlbox2.style.width = ((0.5 - (1500 - value) / 300 * 0.2) * wid - 10 + "px");
+                girlbox2.style.left = ((0.5 + (1500 - value) / 300 * 0.2) * wid + "px");
+            }
+            if (value > 2400 && value < 3000) {
+                girlbox1.style.width = ((0.5 + (value - 3000) / 600 * 0.2) * wid - 10 + "px");
+                girlbox2.style.width = ((0.5 - (value - 3000) / 600 * 0.2) * wid - 10 + "px");
+                girlbox2.style.left = ((0.5 + (value - 3000) / 600 * 0.2) * wid + "px");
+            }
+        }
+    } else if (page3.classList.contains("active")) {
+
+    } else if (page4.classList.contains("active")) {
+
     }
 })
+
+
+
+
+// 关于对话框的一点建议：参照Leiden，改为css中的border-image-source

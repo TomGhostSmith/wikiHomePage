@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+    <div id="loading" style="height: 100%;width: 100%;background-color: #369;z-index: 998;position: fixed;display: block;">
+        <img id="star" src="star.png" alt="" style="width: 200px;position: absolute;left: 0px;top: 0px;z-index: 1;">
+        <img id="candida" src="candida.png" alt="" style="width: 100px;position: absolute;z-index: 0;">
+    </div>
+    <!-- <div id="click" style="position: fixed;z-index: 999;width: 40%;height: 50%;top: 10%;left: 30%;" onclick="func1()"></div> -->
+    <div class="imageWrap" id="wrap" style="z-index: 999;"></div>
+    <div class="content" style="width: 100%;height: 100%;">
+        <div class="page active" id="page1" style="height: 100%;background-color: #4e5775;color:#eee;">
+            <div id="logo" style="position: absolute;width: 100%;text-align: center;">
+                <img src="logo.png" alt="" style="width: 40%;z-index: 997;position: relative;cursor: pointer;vertical-align: middle;" onclick="func1()"> <br>
+                <p style="font-size: 3vw;display: block;">Point-of-care diagnosis of vulvovaginal Candida albicans.<br>Click the camera to see how I was born!</p>
+            </div>
+        </div>
+        <div class="page" id="page2" style="height:4000px;background-color: #4e5775;">
+            <div class="girl" id="girlbox1" style="background-color: #eee;">
+                <img src="2.png" alt="" id="girl1" style="position:absolute;left: 5%;">
+                <div class="dialog left" id="dialog1">
+                    <div class="text" id="text1">
+                        <p>I feel uncomfortable but hospitals are far away and costs are high.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="girl" id="girlbox2" style="background-color: #eee;">
+                <img src="3.png" alt="" id="girl2" style="position:absolute;right: 5%;">
+                <div class="dialog right" id="dialog2">
+                    <div class="text" id="text2">
+                        <p>It's itching again, but I'm crazy busy for checkups.</p>
+                    </div>
+                    <!-- <img src="5-2.png" alt="" id="dia2"> -->
+                </div>
+            </div>
+            <!-- <img src="7.png" alt="" style="width: 100%;"> -->
+        </div>
+        <div class="page" id="page3" style="height: 2000px;">
+            Page3
+        </div>
+        <div class="page" id="page4">
+            Page4
+        </div>
+    </div>
+</body>
+
+<script src="home.js"></script>
+
+</html>
