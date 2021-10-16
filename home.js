@@ -168,6 +168,23 @@ function LayoutPage2() {
 }
 
 
+function LayoutPage3() {
+    wid = document.body.clientWidth;
+    hei = document.body.clientHeight;
+    rows = document.querySelectorAll(".row");
+    texts = document.querySelectorAll(".row .text");
+    // vertical = (wid / hei < 1.33);
+    // if (vertical) {
+    //     [].forEach.call(rows, function(row) {
+    //         row.classList.add("small");
+    //     });
+    //     [].forEach.call(texts, function(text) {
+    //         text.style.top = wid * 0.3 + 30 + "px";
+    //     });
+    // }
+}
+
+
 
 
 // 按钮事件
@@ -182,27 +199,34 @@ function func1() {
 }
 
 function func2() {
-    console.log(page1);
     $flash(page1, page2);
 }
 
+function func3() {
+    $flash(page3, page4);
+}
+
 window.onresize = function() {
-    if (page2.classList.contains("active")) {
-        LayoutPage2();
-    }
+    LayoutPage1();
+    LayoutPage2();
+    LayoutPage3();
 
 }
 
 document.addEventListener("scroll", function() {
+    wid = document.body.clientWidth;
+    hei = document.body.clientHeight;
     var scrollTop = document.documentElement.scrollTop;
-    if (scrollTop - page2.offsetTop < 0) {
+    if (scrollTop + hei - page2.offsetTop < 0) {
         // page1.classList.add("active");
         // page2.classList.remove("active");
-    } else if (scrollTop - page3.offsetTop < 0) {
+    } else if (scrollTop + hei - page3.offsetTop < 0) {
         page1.classList.remove("active");
         page2.classList.add("active");
         page3.classList.remove("active");
-    } else if (scrollTop - page4.offsetTop < 0) {
+    } else if (scrollTop - page3.offsetTop < 0) {
+        page2.classList.add("active");
+    } else if (scrollTop + hei - page4.offsetTop < 0) {
         page2.classList.remove("active");
         page3.classList.add("active");
         page4.classList.remove("active");
@@ -254,7 +278,7 @@ document.addEventListener("scroll", function() {
         } else {
             if (value >= 400 && value < 800) {
                 dialog1.style.top = originTop1 + 100 - value / 8 + "px";
-                dialog1.style.opacity = value / 4 + "%";
+                dialog1.style.opacity = (value - 400) / 4 + "%";
 
             } else if (value < 400) {
                 dialog1.style.opacity = 0;
@@ -301,7 +325,12 @@ document.addEventListener("scroll", function() {
     } else if (page3.classList.contains("active")) {
 
     } else if (page4.classList.contains("active")) {
-
+        var dias = document.querySelectorAll("#page4 .dia");
+        [].forEach.call(dias, function(dia) {
+            if (!dia.classList.contains("show") && scrollTop + hei - page4.offsetTop - dia.offsetTop > 50) {
+                dia.classList.add("show");
+            }
+        })
     }
 })
 

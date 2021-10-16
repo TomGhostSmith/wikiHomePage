@@ -10,6 +10,17 @@ body {
     /* overflow: hidden; */
 }
 
+.text {
+    font-size: 1.9rem;
+    line-height: 2;
+}
+
+@media (max-width:860px) {
+    .text {
+        font-size: 1.2rem;
+    }
+}
+
 #candida {
     opacity: 0;
 }
@@ -95,19 +106,27 @@ body {
     top: 30%;
 }
 
-.dialog {
+.dialog,
+.dia {
     border-radius: 15px;
     background-color: #ccc;
-    position: absolute;
+}
+
+.dialog {
     opacity: 0;
 }
 
-.dialog .text {
-    padding: 15px;
-    font-size: 2rem;
+.dialog {
+    position: absolute;
 }
 
-.dialog.left::after {
+.dialog .text,
+.dia .text {
+    padding: 15px;
+}
+
+.dialog.left::after,
+.dia.left::after {
     position: absolute;
     content: "";
     bottom: 0;
@@ -122,7 +141,8 @@ body {
     /* border-right: 0; */
 }
 
-.dialog.right::after {
+.dialog.right::after,
+.dia.right::after {
     position: absolute;
     content: "";
     bottom: 0;
@@ -135,4 +155,192 @@ body {
     margin-right: -30px;
     margin-bottom: -30px;
     /* border-right: 0; */
+}
+
+.waves {
+    width: 100%;
+    height: 10vh;
+    margin-bottom: -.6875rem;
+    min-height: 3.125rem;
+    max-height: 9.375rem;
+    position: relative
+}
+
+@media (max-width:767px) {
+    .waves {
+        height: 5vh
+    }
+}
+
+.parallax>use {
+    -webkit-animation: wave 25s cubic-bezier(.55, .5, .45, .5) infinite;
+    animation: wave 25s cubic-bezier(.55, .5, .45, .5) infinite
+}
+
+.parallax>use:nth-child(1) {
+    -webkit-animation-delay: -2s;
+    animation-delay: -2s;
+    -webkit-animation-duration: 7s;
+    animation-duration: 7s;
+    fill: rgba(74, 92, 153);
+    /* background-color: #ddd; */
+}
+
+.parallax>use:nth-child(2) {
+    -webkit-animation-delay: -3s;
+    animation-delay: -3s;
+    -webkit-animation-duration: 10s;
+    animation-duration: 10s;
+    fill: rgba(74, 92, 153, 0.6)
+}
+
+.parallax>use:nth-child(3) {
+    -webkit-animation-delay: -4s;
+    animation-delay: -4s;
+    -webkit-animation-duration: 13s;
+    animation-duration: 13s;
+    fill: rgba(74, 92, 153, 0.4)
+}
+
+.parallax>use:nth-child(4) {
+    -webkit-animation-delay: -5s;
+    animation-delay: -5s;
+    -webkit-animation-duration: 20s;
+    animation-duration: 20s;
+    fill: rgba(74, 92, 153, 0.2)
+}
+
+@-webkit-keyframes wave {
+    0% {
+        transform: translate3d(-90px, 0, 0)
+    }
+    100% {
+        transform: translate3d(85px, 0, 0)
+    }
+}
+
+@keyframes wave {
+    0% {
+        transform: translate3d(-90px, 0, 0)
+    }
+    100% {
+        transform: translate3d(85px, 0, 0)
+    }
+}
+
+@-webkit-keyframes wave2 {
+    0% {
+        transform: translate3d(85px, 0, 0)
+    }
+    100% {
+        transform: translate3d(-90px, 0, 0)
+    }
+}
+
+@keyframes wave2 {
+    0% {
+        transform: translate3d(85px, 0, 0)
+    }
+    100% {
+        transform: translate3d(-90px, 0, 0)
+    }
+}
+
+#page3 .row {
+    width: 80%;
+    /* padding: 20px 0; */
+    padding: 30px 10%;
+}
+
+#page3 .row img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30%;
+}
+
+
+/* #page3 .row.small img {
+    display: block;
+    position: absolute;
+    left: 35%;
+} */
+
+#page3 .row .text {
+    margin-left: 3%;
+    display: inline-block;
+    width: 65%;
+    vertical-align: middle;
+}
+
+.wav>use {
+    -webkit-animation: wave 25s cubic-bezier(.55, .5, .45, .5) infinite;
+    animation: wave 25s cubic-bezier(.55, .5, .45, .5) infinite;
+    -webkit-animation-delay: -1s;
+    animation-delay: -2s;
+    -webkit-animation-duration: 14s;
+    animation-duration: 14s;
+}
+
+.wav2>use {
+    -webkit-animation: wave2 25s cubic-bezier(.55, .5, .45, .5) infinite;
+    animation: wave2 25s cubic-bezier(.55, .5, .45, .5) infinite;
+    -webkit-animation-delay: -1s;
+    animation-delay: -2s;
+    -webkit-animation-duration: 19s;
+    animation-duration: 14s;
+}
+
+#page4 .wrap {
+    padding-top: 20px;
+    padding-bottom: 50px;
+    width: 100%;
+}
+
+.dia.left {
+    position: relative;
+    top: 50px;
+    width: 35%;
+    left: -100%;
+}
+
+.dia.right {
+    position: relative;
+    top: 50px;
+    width: 35%;
+    right: -155%;
+}
+
+.dia.left.show {
+    top: 0;
+    left: 10%;
+    opacity: 100%;
+    transition: all 1s;
+}
+
+.dia.right.show {
+    right: -55%;
+    top: 0;
+    opacity: 100%;
+    transition: all 1s;
+}
+
+@media (max-width:860px) {
+    .dia.left,
+    .dia.right {
+        width: 60%;
+    }
+    .dia.right.show {
+        right: -30%;
+    }
+}
+
+#finaldia {
+    top: 50px;
+    opacity: 0;
+}
+
+#finaldia.show {
+    top: 0;
+    opacity: 100%;
+    transition: all 1s;
 }

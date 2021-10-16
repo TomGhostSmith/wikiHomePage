@@ -17,6 +17,7 @@
     <!-- <div id="click" style="position: fixed;z-index: 999;width: 40%;height: 50%;top: 10%;left: 30%;" onclick="func1()"></div> -->
     <div class="imageWrap" id="wrap" style="z-index: 999;"></div>
     <div class="content" style="width: 100%;height: 100%;">
+        <div class="bg" style="position: fixed;height: 100%;width: 100%;background-color: #4e5775;"></div>
         <div class="page active" id="page1" style="height: 100%;background-color: #4e5775;color:#eee;">
             <div id="logo" style="position: absolute;width: 100%;text-align: center;">
                 <img src="logo.png" alt="" style="width: 40%;z-index: 997;position: relative;cursor: pointer;vertical-align: middle;" onclick="func1()"> <br>
@@ -25,7 +26,7 @@
         </div>
         <div class="page" id="page2" style="height:4000px;background-color: #4e5775;">
             <div class="girl" id="girlbox1" style="background-color: #eee;">
-                <img src="2.png" alt="" id="girl1" style="position:absolute;left: 5%;">
+                <img src="girl1.gif" alt="" id="girl1" style="position:absolute;left: 5%;">
                 <div class="dialog left" id="dialog1">
                     <div class="text" id="text1">
                         <p>I feel uncomfortable but hospitals are far away and costs are high.</p>
@@ -38,16 +39,162 @@
                     <div class="text" id="text2">
                         <p>It's itching again, but I'm crazy busy for checkups.</p>
                     </div>
-                    <!-- <img src="5-2.png" alt="" id="dia2"> -->
                 </div>
             </div>
-            <!-- <img src="7.png" alt="" style="width: 100%;"> -->
         </div>
-        <div class="page" id="page3" style="height: 2000px;">
-            Page3
+        <div class="wavecontainer page" style="background-color: rgba(0, 0, 0, 0);">
+            <div id="waves">
+                <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                    <defs>
+                        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+                    </defs>
+                    <g class="parallax">
+                        <use xlink:href="#gentle-wave" x="48" y="1"/>
+                        <use xlink:href="#gentle-wave" x="48" y="3"/>
+                        <use xlink:href="#gentle-wave" x="48" y="5"/>
+                        <use xlink:href="#gentle-wave" x="48" y="7"/>
+                    </g>
+                </svg>
+            </div>
         </div>
-        <div class="page" id="page4">
-            Page4
+        <div class="page" id="page3" style="background-color: #4e5775;">
+            <div class="wrap" style="background-color: #4a5c99;">
+                <div class="row">
+                    <img src="temppic.png" alt="">
+                    <div class="text" style="color: #c6cbe0;">
+                        Candida albicans affects up to 75% of the women at least once in their lifetime.
+                    </div>
+                </div>
+                <div id="waves">
+                    <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                        <defs>
+                            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+                        </defs>
+                        <g class="wav">
+                            <use xlink:href="#gentle-wave" x="48" y="1" style="fill: #a1a6b7;"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="wrap" style="background-color: #a1a6b7;">
+                <div class="row">
+                    <div class="text">
+                        40～50% of women have experienced recurrence of VVC.
+                    </div>
+                    <img src="temppic.png" alt="">
+                </div>
+                <div id="waves">
+                    <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                        <defs>
+                            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+                        </defs>
+                        <g class="wav2">
+                            <use xlink:href="#gentle-wave" x="48" y="1" style="fill: #c6cbe0;"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="wrap" style="background-color: #c6cbe0;">
+                <div class="row">
+                    <img src="temppic.png" alt="">
+                    <div class="text">
+                        Vulvovaginal candidiasis (VVC), also known as mycotic vaginitis, candidal vaginitis, vaginal yeast infection, etc., is caused by Candida infection, of which Candida albicans is the most common pathogen. The development of VVC is usually attributed to
+                        the disturbance of the balance between Candida vaginal colonization and host environment by physiological or nonphysiological changes.
+                    </div>
+                </div>
+                <div id="waves">
+                    <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                        <defs>
+                            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+                        </defs>
+                        <g class="wav">
+                            <use xlink:href="#gentle-wave" x="48" y="1" style="fill: #eee;"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="wrap" style="background-color: #eee;">
+                <div class="row">
+                    <div class="text">
+                        For pregnant women, it can cause premature delivery, fetal infections, and malformations. Therefore, timely and accurate diagnosis and identification of VVC and effective treatment measures are of great practical and far-reaching significance for improving
+                        people's health, especially women's reproductive health.
+                    </div>
+                    <img src="temppic.png" alt="">
+                </div>
+                <div class="imgwrap" style="text-align: center;">
+                    <img src="logo.png" alt="" style="width: 40%;z-index: 997;position: relative;cursor: pointer;vertical-align: middle;" onclick="func3()"> <br>
+                </div>
+                <div id="waves">
+                    <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                        <defs>
+                            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+                        </defs>
+                        <g class="wav2">
+                            <use xlink:href="#gentle-wave" x="48" y="1" style="fill: #3b456d;"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="page" id="page4" style="background-color: #3b456d;padding-bottom: 50px;overflow-x: hidden;">
+            <div class="wrap">
+                <div class="dia left">
+                    <div class="text">
+                        <p>However, current detection methods are slow and inaccurate...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+                <div class="dia right">
+                    <div class="text">
+                        <p>We apply isothermal amplification which allows detection of candida albicans within 30 mins</p>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+                <div class="dia left">
+                    <div class="text">
+                        <p>... or expensive.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+                <div class="dia right">
+                    <div class="text">
+                        <p>By combining synthetic biology, we would like to lower the production cost of the enzymes entailed in the detection process.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+                <div class="dia left">
+                    <div class="text">
+                        <p>Other existing methods are specialized and complicated.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+                <div class="dia right">
+                    <div class="text">
+                        <p>LFA (Lateral flow assay) garantees simple operations and visible results. </p>
+                    </div>
+                </div>
+            </div>
+            <img src="stu1.png" alt="" style="display: inline;width: 30%;position: relative;left: 10%;">
+            <img src="stu2.png" alt="" style="display: inline;width: 30%;position: relative;left: 30%;">
+            <div class="dia" id="finaldia" style="width: 70%;position: relative;left: 15%;margin-top: 50px;">
+                <div class="text">
+                    <p>We wish to offer quick, easy, cheap and highly-accurate diagnostic product for Candida albicans infection which can be used by anyone, anytime and everywhere!</p>
+                </div>
+            </div>
+        </div>
+        <div class="page" id="page5">
+            <div class="wrap text" style="padding: 20px 50px;text-align: center;">
+                See how our project cover every scene and fight against Candida albicans!
+            </div>
+            <div class="column">
+                .pic
+            </div>
         </div>
     </div>
 </body>
