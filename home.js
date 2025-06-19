@@ -20,6 +20,16 @@ var originTop1, originTop2;
 
 var star = document.getElementById("star");
 
+var col1 = document.getElementById("col1");
+var col2 = document.getElementById("col2");
+var col3 = document.getElementById("col3");
+
+var des1 = document.getElementById("des1");
+var des2 = document.getElementById("des2");
+var des3 = document.getElementById("des3");
+
+var columns = document.getElementById("columns");
+
 const $flash = (removePage, showPage) => {
     var wrap = document.getElementById("wrap");
     wrap.classList.add("shutterClick");
@@ -92,6 +102,7 @@ function LoadingFade() {
                 loadingPage.style.display = "none";
                 LayoutPage1();
                 LayoutPage2();
+                LayoutPage5();
             }, 300);
         }, 1200);
     }, 1500);
@@ -185,6 +196,12 @@ function LayoutPage3() {
 }
 
 
+function LayoutPage5() {
+    var img = document.getElementById("img1");
+    var heading = document.getElementById("heading1");
+    columns.style.height = img.clientHeight + heading.clientHeight + "px";
+}
+
 
 
 // 按钮事件
@@ -210,6 +227,7 @@ window.onresize = function() {
     LayoutPage1();
     LayoutPage2();
     LayoutPage3();
+    LayoutPage5();
 
 }
 
@@ -338,3 +356,44 @@ document.addEventListener("scroll", function() {
 
 
 // 关于对话框的一点建议：参照Leiden，改为css中的border-image-source
+
+function func4() {
+
+
+    var img = document.getElementById("img1");
+    var heading = document.getElementById("heading1");
+    col1.classList.add("show");
+    col2.classList.remove("show");
+    col3.classList.remove("show");
+    des1.style.top = -img.clientHeight + "px";
+    des1.style.height = img.clientHeight + heading.clientHeight + "px";
+    des2.style.top = 0;
+    des3.style.top = 0;
+}
+
+function func5() {
+
+    var img = document.getElementById("img1");
+    var heading = document.getElementById("heading1");
+    col1.classList.remove("show");
+    col2.classList.add("show");
+    col3.classList.remove("show");
+    des1.style.top = 0;
+    des2.style.top = -img.clientHeight + "px";
+    des2.style.height = img.clientHeight + heading.clientHeight + "px";
+    des3.style.top = 0;
+}
+
+function func6() {
+
+    var img = document.getElementById("img1");
+    var heading = document.getElementById("heading1");
+    col1.classList.remove("show");
+    col2.classList.remove("show");
+    col3.classList.add("show");
+    des1.style.top = 0;
+    des2.style.top = 0;
+    des3.style.top = -img.clientHeight + "px";
+    des3.style.height = img.clientHeight + heading.clientHeight + "px";
+
+}
